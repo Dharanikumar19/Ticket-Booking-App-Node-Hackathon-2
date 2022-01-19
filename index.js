@@ -5,7 +5,7 @@ const mongodb = require("mongodb")
 const bcrypt = require("bcryptjs");
 const jwt = require("jsonwebtoken");
 const mongoClient = mongodb.MongoClient;
-const nodemailer = require("nodemailer");
+// const nodemailer = require("nodemailer");
 const URL = "mongodb+srv://Dharanikumar:Dharanikumar@cluster0.v33af.mongodb.net?retryWrites=true&w=majority"
 const secret = "jGa3BhjuS2Msg"
 app.use(express.json());
@@ -27,15 +27,15 @@ let authenticate = function (req, res, next) {
 }
 
 //node mailer
-let testAccount = await nodemailer.createTestAccount();
+// let testAccount = await nodemailer.createTestAccount();
 
-let transporter = nodemailer.createTransport({
-    host: "gmail",
-    auth: {
-      user: "dummymail@gmail.com", 
-      pass: "dummypassword", 
-    },
-  });
+// let transporter = nodemailer.createTransport({
+//     host: "gmail",
+//     auth: {
+//       user: "dummymail@gmail.com", 
+//       pass: "dummypassword", 
+//     },
+//   });
 
 
 //user registeration
