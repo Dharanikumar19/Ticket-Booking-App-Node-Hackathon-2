@@ -5,6 +5,7 @@ const mongodb = require("mongodb")
 const bcrypt = require("bcryptjs");
 const jwt = require("jsonwebtoken");
 const mongoClient = mongodb.MongoClient;
+const nodemailer = require("nodemailer");
 const URL = "mongodb+srv://Dharanikumar:Dharanikumar@cluster0.v33af.mongodb.net?retryWrites=true&w=majority"
 const secret = "jGa3BhjuS2Msg"
 app.use(express.json());
@@ -25,10 +26,31 @@ let authenticate = function (req, res, next) {
     }
 }
 
+//node mailer
+let testAccount = await nodemailer.createTestAccount();
+
+let transporter = nodemailer.createTransport({
+    host: "gmail",
+    auth: {
+      user: "dummymail@gmail.com", 
+      pass: "dummypassword", 
+    },
+  });
 
 
 //user registeration
 app.post("/register", async (req, res) => {
+
+
+    // let info = await transporter.sendMail({
+    //     from: 'dummymail@gmail.com',
+    //     to: req.body.email, 
+    //     subject: "Hello ✔", 
+    //     text: "Welcome to our website"
+    //   });
+
+    //   console.log("Message sent: %s", info.messageId);
+
     try {
         let connection = await mongoClient.connect(URL);
         let db = connection.db("ticket-booking-app");
